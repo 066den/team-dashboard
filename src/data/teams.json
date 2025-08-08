@@ -1,0 +1,190 @@
+[
+	{
+		"id": "1",
+		"name": "Іван Петренко",
+		"role": "Developer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380000000000",
+		"telegram": "@ivan",
+		"email": "ivan.petrenko@company.com",
+		"joinDate": "2022-03-15"
+	},
+	{
+		"id": "2",
+		"name": "Олена Коваль",
+		"role": "Sales Manager",
+		"department": "Продажі",
+		"status": "inactive",
+		"phone": "+380111111111",
+		"telegram": "@olena",
+		"email": "olena.koval@company.com",
+		"joinDate": "2022-03-15"
+	},
+
+	{
+		"id": "3",
+		"name": "Іван Петренко",
+		"role": "Senior Developer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380501234567",
+		"telegram": "@ivan_dev",
+		"email": "ivan.petrenko@company.com",
+		"joinDate": "2022-03-15"
+	},
+	{
+		"id": "4",
+		"name": "Марія Коваленко",
+		"role": "Team Lead",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380502345678",
+		"telegram": "@maria_lead",
+		"email": "maria.kovalenko@company.com",
+		"joinDate": "2021-01-10"
+	},
+	{
+		"id": "5",
+		"name": "Олександр Шевченко",
+		"role": "Sales Manager",
+		"department": "Продажі",
+		"status": "active",
+		"phone": "+380503456789",
+		"telegram": "@alex_sales",
+		"email": "alex.shevchenko@company.com",
+		"joinDate": "2022-06-20"
+	},
+	{
+		"id": "6",
+		"name": "Анна Мельник",
+		"role": "Financial Analyst",
+		"department": "Фінанси",
+		"status": "active",
+		"phone": "+380504567890",
+		"telegram": "@anna_finance",
+		"email": "anna.melnyk@company.com",
+		"joinDate": "2023-02-14"
+	},
+	{
+		"id": "7",
+		"name": "Дмитро Сидоров",
+		"role": "Junior Developer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380505678901",
+		"telegram": "@dmitro_junior",
+		"email": "dmitro.sidorov@company.com",
+		"joinDate": "2023-09-01"
+	},
+	{
+		"id": "8",
+		"name": "Олена Ткаченко",
+		"role": "Sales Representative",
+		"department": "Продажі",
+		"status": "inactive",
+		"phone": "+380506789012",
+		"telegram": "@olena_sales",
+		"email": "olena.tkachenko@company.com",
+		"joinDate": "2022-11-03"
+	},
+	{
+		"id": "9",
+		"name": "Сергій Кравченко",
+		"role": "DevOps Engineer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380507890123",
+		"telegram": "@sergey_devops",
+		"email": "sergey.kravchenko@company.com",
+		"joinDate": "2021-08-17"
+	},
+	{
+		"id": "10",
+		"name": "Наталя Бондар",
+		"role": "Accountant",
+		"department": "Фінанси",
+		"status": "active",
+		"phone": "+380508901234",
+		"telegram": "@natalia_acc",
+		"email": "natalia.bondar@company.com",
+		"joinDate": "2020-05-25"
+	},
+	{
+		"id": "11",
+		"name": "Андрій Лисенко",
+		"role": "QA Engineer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380509012345",
+		"telegram": "@andrew_qa",
+		"email": "andrew.lysenko@company.com",
+		"joinDate": "2022-12-08"
+	},
+	{
+		"id": "12",
+		"name": "Юлія Морозова",
+		"role": "Sales Director",
+		"department": "Продажі",
+		"status": "active",
+		"phone": "+380500123456",
+		"telegram": "@julia_director",
+		"email": "julia.morozova@company.com",
+		"joinDate": "2020-01-15"
+	},
+	{
+		"id": "13",
+		"name": "Віталій Гриценко",
+		"role": "Frontend Developer",
+		"department": "Технічний",
+		"status": "active",
+		"phone": "+380501234560",
+		"telegram": "@vitaly_front",
+		"email": "vitaly.gritsenko@company.com",
+		"joinDate": "2023-04-12"
+	},
+	{
+		"id": "14",
+		"name": "Тетяна Павленко",
+		"role": "CFO",
+		"department": "Фінанси",
+		"status": "active",
+		"phone": "+380502345601",
+		"telegram": "@tetyana_cfo",
+		"email": "tetyana.pavlenko@company.com",
+		"joinDate": "2019-11-20"
+	},
+	{
+		"id": "15",
+		"name": "Максим Зайцев",
+		"role": "Backend Developer",
+		"department": "Технічний",
+		"status": "inactive",
+		"phone": "+380503456012",
+		"telegram": "@max_backend",
+		"email": "maksym.zaitsev@company.com",
+		"joinDate": "2022-07-30"
+	},
+	{
+		"id": "16",
+		"name": "Ірина Волкова",
+		"role": "Sales Coordinator",
+		"department": "Продажі",
+		"status": "active",
+		"phone": "+380504560123",
+		"telegram": "@irina_coord",
+		"email": "irina.volkova@company.com",
+		"joinDate": "2023-01-18"
+	},
+	{
+		"id": "17",
+		"name": "Роман Данилов",
+		"role": "Financial Controller",
+		"department": "Фінанси",
+		"status": "active",
+		"phone": "+380505601234",
+		"telegram": "@roman_control",
+		"email": "roman.danilov@company.com",
+		"joinDate": "2021-10-05"
+	}
+]
