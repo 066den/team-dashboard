@@ -13,12 +13,7 @@ export interface TeamMember {
 
 export interface TeamFilter {
 	department: Department | ''
-	status: 'active' | 'inactive'
 	search: string
-	sort: 'name' | 'role' | 'department' | 'status'
-	order: 'asc' | 'desc'
-	page: number
-	limit: number
 }
 
 export interface Task {

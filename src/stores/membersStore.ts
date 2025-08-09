@@ -1,13 +1,17 @@
 import { delayApiCall } from '@/lib/utils'
-import { TeamMember } from '@/types'
+import { getMembers } from '@/services/getMembers'
+import { TeamFilter, TeamMember } from '@/types'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
 interface MembersStore {
 	members: TeamMember[]
+	filteredMembers: TeamMember[] | null
 	viewMode: 'grid' | 'list'
 	setViewMode: (viewMode: 'grid' | 'list') => void
 	fetchMembers: () => Promise<void>
+	filter: TeamFilter
+	setFilter: (filter: TeamFilter) => void
 	initialize: () => void
 	isLoading: boolean
 	error: string | null
@@ -18,6 +22,11 @@ export const useMembersStore = create<MembersStore>()(
 	persist(
 		(set, get) => ({
 			members: [],
+			filter: {
+				department: '',
+				search: '',
+			},
+			filteredMembers: null,
 			viewMode: 'grid',
 			isLoading: false,
 			error: null,
@@ -27,15 +36,16 @@ export const useMembersStore = create<MembersStore>()(
 			},
 			fetchMembers: async () => {
 				set({ isLoading: true })
-				await delayApiCall(1000)
 				try {
-					const response = await fetch('/api/teams')
-					if (!response.ok) {
-						throw new Error('Failed to fetch team members')
+					if (!get().isInitialized) {
+						const members = await getMembers()
+						if (!members) {
+							throw new Error('Failed to fetch team members')
+						}
+						set({ members })
 					}
-
-					const data = await response.json()
-					set({ members: data })
+					await delayApiCall(10000)
+					set({ filteredMembers: get().members })
 				} catch (error) {
 					console.error('Error fetching team members:', error)
 					set({ error: 'Failed to fetch team members' })
@@ -44,18 +54,30 @@ export const useMembersStore = create<MembersStore>()(
 					set({ isLoading: false })
 				}
 			},
+			setFilter: (filter: TeamFilter) => {
+				set({
+					filter,
+					filteredMembers: get().members.filter(
+						member =>
+							member.department === filter.department ||
+							member.name.toLowerCase().includes(filter.search.toLowerCase())
+					),
+				})
+			},
 			initialize: async () => {
 				set({ isLoading: true })
-				if (!get().isInitialized) {
-					await get().fetchMembers()
-					set({ isInitialized: true })
-				}
+				await get().fetchMembers()
+				set({ isInitialized: true })
+
 				set({ isLoading: false })
 			},
 		}),
 		{
 			name: 'members-store',
-			partialize: state => ({ members: state.members }),
+			partialize: state => ({
+				members: state.members,
+				isInitialized: state.isInitialized,
+			}),
 			storage: createJSONStorage(() => localStorage),
 		}
 	)

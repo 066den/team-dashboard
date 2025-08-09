@@ -4,7 +4,9 @@ import { useMembersStore } from '../membersStore'
 
 export const useMembers = () => {
 	const {
-		members,
+		filteredMembers,
+		filter,
+		setFilter,
 		isLoading,
 		error,
 		fetchMembers,
@@ -19,7 +21,9 @@ export const useMembers = () => {
 	}, [initialize])
 
 	return {
-		members,
+		members: filteredMembers,
+		filter,
+		setFilter,
 		isLoading,
 		error,
 		fetchMembers,
