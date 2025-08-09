@@ -3,7 +3,6 @@ import { Avatar, AvatarFallback } from '../ui/avatar'
 import { TeamMember } from '@/types'
 import { cn, getAvatarColor, getFirstLetters } from '@/lib/utils'
 import { Card, CardContent, CardFooter } from '../ui/card'
-import { Mail, Phone, MessageCircle, Calendar } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 
 type MemberCardProps = {

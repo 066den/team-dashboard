@@ -14,11 +14,18 @@ export const useMembers = () => {
 		isInitialized,
 		viewMode,
 		setViewMode,
+		refreshMembers,
 	} = useMembersStore()
 
 	useEffect(() => {
 		initialize()
 	}, [initialize])
+
+	useEffect(() => {
+		if (!filteredMembers) {
+			refreshMembers()
+		}
+	}, [filteredMembers, refreshMembers])
 
 	return {
 		members: filteredMembers,
@@ -31,5 +38,6 @@ export const useMembers = () => {
 		isInitialized,
 		viewMode,
 		setViewMode,
+		refreshMembers,
 	}
 }

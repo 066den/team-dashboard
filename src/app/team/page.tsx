@@ -1,16 +1,15 @@
 'use client'
 import { Suspense, useMemo } from 'react'
 import PageHeading from '@/components/common/PageHeading'
-import TeamListGrid from '@/components/team/TeamListGrid'
-import TeamListRow from '@/components/team/TeamListRow'
 import { useMembers } from '@/stores/hooks/useMembers'
 import { AlertCircle, GridIcon, ListIcon, Search } from 'lucide-react'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
 import { Card, CardContent } from '@/components/ui/card'
 import TeamFilters from '@/components/team/TeamFilters'
+import TeamList from '@/components/team/TeamList'
 
 const TeamPage = () => {
-	const { viewMode, setViewMode, error, members, filter } = useMembers()
+	const { viewMode, setViewMode, error, filter, members } = useMembers()
 	const hasFilters = useMemo(() => {
 		return Boolean(filter.search || filter.department)
 	}, [filter])
@@ -48,6 +47,9 @@ const TeamPage = () => {
 					</ToggleGroupItem>
 				</ToggleGroup>
 			</div>
+
+			{/* <TeamList members={members} viewMode={viewMode} /> */}
+
 			{error ? (
 				<Card className='border-destructive'>
 					<CardContent className='p-8 text-center'>
@@ -75,13 +77,9 @@ const TeamPage = () => {
 						</div>
 					</CardContent>
 				</Card>
-			) : viewMode === 'grid' ? (
-				<Suspense fallback={<div>Loading...</div>}>
-					<TeamListGrid />
-				</Suspense>
 			) : (
 				<Suspense fallback={<div>Loading...</div>}>
-					<TeamListRow />
+					<TeamList members={members} viewMode={viewMode} />
 				</Suspense>
 			)}
 		</div>

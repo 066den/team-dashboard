@@ -1,4 +1,4 @@
-import { delayApiCall } from '@/lib/utils'
+import { delayApiCall, filterMembers } from '@/lib/utils'
 import { getMembers } from '@/services/getMembers'
 import { TeamFilter, TeamMember } from '@/types'
 import { create } from 'zustand'
@@ -10,6 +10,7 @@ interface MembersStore {
 	viewMode: 'grid' | 'list'
 	setViewMode: (viewMode: 'grid' | 'list') => void
 	fetchMembers: () => Promise<void>
+	refreshMembers: () => Promise<void>
 	filter: TeamFilter
 	setFilter: (filter: TeamFilter) => void
 	initialize: () => void
@@ -35,17 +36,14 @@ export const useMembersStore = create<MembersStore>()(
 				set({ viewMode })
 			},
 			fetchMembers: async () => {
-				set({ isLoading: true })
+				set({ isLoading: true, error: null })
 				try {
-					if (!get().isInitialized) {
-						const members = await getMembers()
-						if (!members) {
-							throw new Error('Failed to fetch team members')
-						}
-						set({ members })
+					const members = await getMembers()
+					if (!members) {
+						throw new Error('Failed to fetch team members')
 					}
-					await delayApiCall(10000)
-					set({ filteredMembers: get().members })
+
+					set({ members, filteredMembers: members, isInitialized: true })
 				} catch (error) {
 					console.error('Error fetching team members:', error)
 					set({ error: 'Failed to fetch team members' })
@@ -54,22 +52,25 @@ export const useMembersStore = create<MembersStore>()(
 					set({ isLoading: false })
 				}
 			},
+			refreshMembers: async () => {
+				await delayApiCall()
+				if (Math.random() < 0.05) {
+					throw new Error('Failed to fetch team members')
+				}
+				set({ filteredMembers: get().members })
+			},
 			setFilter: (filter: TeamFilter) => {
+				const members = get().members
+				const filtered = filterMembers(members, filter)
 				set({
 					filter,
-					filteredMembers: get().members.filter(
-						member =>
-							member.department === filter.department ||
-							member.name.toLowerCase().includes(filter.search.toLowerCase())
-					),
+					filteredMembers: filtered,
 				})
 			},
 			initialize: async () => {
-				set({ isLoading: true })
-				await get().fetchMembers()
-				set({ isInitialized: true })
-
-				set({ isLoading: false })
+				if (!get().isInitialized) {
+					await get().fetchMembers()
+				}
 			},
 		}),
 		{
@@ -77,6 +78,7 @@ export const useMembersStore = create<MembersStore>()(
 			partialize: state => ({
 				members: state.members,
 				isInitialized: state.isInitialized,
+				viewMode: state.viewMode,
 			}),
 			storage: createJSONStorage(() => localStorage),
 		}
