@@ -7,7 +7,7 @@ export interface TeamMember {
 	phone?: string
 	telegram?: string
 	email?: string
-	joinDate: string
+	joinDate?: string
 	avatar?: string
 }
 

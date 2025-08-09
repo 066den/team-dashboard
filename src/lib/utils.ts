@@ -22,3 +22,20 @@ export const getAvatarColor = (name: string): string => {
 	return colors[colorIndex]
 }
 
+// Delay utility (simulate API calls)
+export const delayApiCall = (ms: number): Promise<void> =>
+	new Promise(resolve => setTimeout(resolve, ms))
+
+// Get first letters of a name
+export const getFirstLetters = (name: string, count = 2) => {
+	return name
+		.replace(/[.,!@#$%^&*()_+=\-`~[\]/\\{}:"|<>?]+/gi, '')
+		.trim()
+		.split(/\s+/)
+		.slice(0, count)
+		.map((word: string) => {
+			if (!word.length) return ''
+			return word.match(/./u)![0].toUpperCase()
+		})
+		.join('')
+}
