@@ -1,182 +1,184 @@
-[
-	{
-		"id": "task-1",
-		"title": "Оптимізація бази даних",
-		"description": "Покращити продуктивність запитів до БД",
-		"status": "in-progress",
-		"priority": "high",
-		"assigneeId": "1",
-		"createdAt": "2024-01-15T10:00:00Z",
-		"updatedAt": "2024-01-20T14:30:00Z"
-	},
-	{
-		"id": "task-2",
-		"title": "Код-рев'ю нової фічі",
-		"description": "Перевірити PR для системи нотифікацій",
-		"status": "todo",
-		"priority": "medium",
-		"assigneeId": "2",
-		"createdAt": "2024-01-18T09:15:00Z",
-		"updatedAt": "2024-01-18T09:15:00Z"
-	},
-	{
-		"id": "task-3",
-		"title": "Підготовка презентації для клієнта",
-		"description": "Створити презентацію продукту для великого клієнта",
-		"status": "done",
-		"priority": "high",
-		"assigneeId": "3",
-		"createdAt": "2024-01-10T11:00:00Z",
-		"updatedAt": "2024-01-17T16:45:00Z"
-	},
-	{
-		"id": "task-4",
-		"title": "Аналіз фінансового звіту Q4",
-		"description": "Підготувати детальний аналіз фінансових результатів",
-		"status": "in-progress",
-		"priority": "high",
-		"assigneeId": "4",
-		"createdAt": "2024-01-12T08:30:00Z",
-		"updatedAt": "2024-01-19T13:20:00Z"
-	},
-	{
-		"id": "task-5",
-		"title": "Імплементація API ендпоінтів",
-		"description": "Розробити нові REST API для мобільного додатку",
-		"status": "todo",
-		"priority": "medium",
-		"assigneeId": "5",
-		"createdAt": "2024-01-16T14:00:00Z",
-		"updatedAt": "2024-01-16T14:00:00Z"
-	},
-	{
-		"id": "task-6",
-		"title": "Оновлення CRM системи",
-		"description": "Додати нові поля для кращого трекінгу клієнтів",
-		"status": "todo",
-		"priority": "low",
-		"assigneeId": "6",
-		"createdAt": "2024-01-14T10:45:00Z",
-		"updatedAt": "2024-01-14T10:45:00Z"
-	},
-	{
-		"id": "task-7",
-		"title": "Налаштування CI/CD pipeline",
-		"description": "Автоматизація процесу деплойменту",
-		"status": "done",
-		"priority": "high",
-		"assigneeId": "7",
-		"createdAt": "2024-01-08T12:30:00Z",
-		"updatedAt": "2024-01-15T17:00:00Z"
-	},
-	{
-		"id": "task-8",
-		"title": "Підготовка річного бюджету",
-		"description": "Розрахунок бюджету на наступний рік",
-		"status": "in-progress",
-		"priority": "medium",
-		"assigneeId": "8",
-		"createdAt": "2024-01-11T09:00:00Z",
-		"updatedAt": "2024-01-18T11:30:00Z"
-	},
-	{
-		"id": "task-9",
-		"title": "Тестування мобільного додатку",
-		"description": "Повне функціональне тестування нової версії",
-		"status": "in-progress",
-		"priority": "high",
-		"assigneeId": "9",
-		"createdAt": "2024-01-13T15:20:00Z",
-		"updatedAt": "2024-01-19T10:15:00Z"
-	},
-	{
-		"id": "task-10",
-		"title": "Планування маркетингової кампанії",
-		"description": "Розробка стратегії залучення нових клієнтів",
-		"status": "todo",
-		"priority": "medium",
-		"assigneeId": "10",
-		"createdAt": "2024-01-17T13:45:00Z",
-		"updatedAt": "2024-01-17T13:45:00Z"
-	},
-	{
-		"id": "task-11",
-		"title": "Рефакторинг компонентів UI",
-		"description": "Покращення архітектури фронтенд компонентів",
-		"status": "todo",
-		"priority": "low",
-		"assigneeId": "11",
-		"createdAt": "2024-01-16T16:00:00Z",
-		"updatedAt": "2024-01-16T16:00:00Z"
-	},
-	{
-		"id": "task-12",
-		"title": "Аудит фінансових процесів",
-		"description": "Перевірка відповідності фінансових процедур",
-		"status": "done",
-		"priority": "high",
-		"assigneeId": "12",
-		"createdAt": "2024-01-05T10:00:00Z",
-		"updatedAt": "2024-01-12T14:30:00Z"
-	},
-	{
-		"id": "task-13",
-		"title": "Міграція серверної архітектури",
-		"description": "Переведення сервісів на нову інфраструктуру",
-		"status": "in-progress",
-		"priority": "high",
-		"assigneeId": "13",
-		"createdAt": "2024-01-09T11:30:00Z",
-		"updatedAt": "2024-01-18T15:45:00Z"
-	},
-	{
-		"id": "task-14",
-		"title": "Аналіз конверсії продажів",
-		"description": "Дослідження ефективності воронки продажів",
-		"status": "done",
-		"priority": "medium",
-		"assigneeId": "14",
-		"createdAt": "2024-01-07T14:20:00Z",
-		"updatedAt": "2024-01-14T12:00:00Z"
-	},
-	{
-		"id": "task-15",
-		"title": "Оптимізація податкового планування",
-		"description": "Розробка стратегії мінімізації податкових витрат",
-		"status": "todo",
-		"priority": "medium",
-		"assigneeId": "15",
-		"createdAt": "2024-01-19T09:30:00Z",
-		"updatedAt": "2024-01-19T09:30:00Z"
-	},
-	{
-		"id": "task-16",
-		"title": "Написання документації API",
-		"description": "Створення детальної документації для розробників",
-		"status": "todo",
-		"priority": "low",
-		"assigneeId": "1",
-		"createdAt": "2024-01-20T10:15:00Z",
-		"updatedAt": "2024-01-20T10:15:00Z"
-	},
-	{
-		"id": "task-17",
-		"title": "Планування спринту",
-		"description": "Підготовка задач на наступний двотижневий спринт",
-		"status": "in-progress",
-		"priority": "medium",
-		"assigneeId": "2",
-		"createdAt": "2024-01-18T16:00:00Z",
-		"updatedAt": "2024-01-19T09:30:00Z"
-	},
-	{
-		"id": "task-18",
-		"title": "Навчання нового співробітника",
-		"description": "Онбординг нового junior розробника",
-		"status": "done",
-		"priority": "medium",
-		"assigneeId": "2",
-		"createdAt": "2024-01-03T09:00:00Z",
-		"updatedAt": "2024-01-10T17:30:00Z"
-	}
-]
+{
+	"mockTasks": [
+		{
+			"id": "task-1",
+			"title": "Оптимізація бази даних",
+			"description": "Покращити продуктивність запитів до БД",
+			"status": "in-progress",
+			"priority": "high",
+			"assigneeId": "1",
+			"createdAt": "2024-01-15T10:00:00Z",
+			"dueDate": "2024-01-20T14:30:00Z"
+		},
+		{
+			"id": "task-2",
+			"title": "Код-рев'ю нової фічі",
+			"description": "Перевірити PR для системи нотифікацій",
+			"status": "todo",
+			"priority": "medium",
+			"assigneeId": "2",
+			"createdAt": "2024-01-18T09:15:00Z",
+			"dueDate": "2024-01-18T09:15:00Z"
+		},
+		{
+			"id": "task-3",
+			"title": "Підготовка презентації для клієнта",
+			"description": "Створити презентацію продукту для великого клієнта",
+			"status": "done",
+			"priority": "high",
+			"assigneeId": "3",
+			"createdAt": "2024-01-10T11:00:00Z",
+			"dueDate": "2024-01-17T16:45:00Z"
+		},
+		{
+			"id": "task-4",
+			"title": "Аналіз фінансового звіту Q4",
+			"description": "Підготувати детальний аналіз фінансових результатів",
+			"status": "in-progress",
+			"priority": "high",
+			"assigneeId": "4",
+			"createdAt": "2024-01-12T08:30:00Z",
+			"dueDate": "2024-01-19T13:20:00Z"
+		},
+		{
+			"id": "task-5",
+			"title": "Імплементація API ендпоінтів",
+			"description": "Розробити нові REST API для мобільного додатку",
+			"status": "todo",
+			"priority": "medium",
+			"assigneeId": "5",
+			"createdAt": "2024-01-16T14:00:00Z",
+			"dueDate": "2024-01-16T14:00:00Z"
+		},
+		{
+			"id": "task-6",
+			"title": "Оновлення CRM системи",
+			"description": "Додати нові поля для кращого трекінгу клієнтів",
+			"status": "todo",
+			"priority": "low",
+			"assigneeId": "6",
+			"createdAt": "2024-01-14T10:45:00Z",
+			"dueDate": "2024-01-14T10:45:00Z"
+		},
+		{
+			"id": "task-7",
+			"title": "Налаштування CI/CD pipeline",
+			"description": "Автоматизація процесу деплойменту",
+			"status": "done",
+			"priority": "high",
+			"assigneeId": "7",
+			"createdAt": "2024-01-08T12:30:00Z",
+			"dueDate": "2024-01-15T17:00:00Z"
+		},
+		{
+			"id": "task-8",
+			"title": "Підготовка річного бюджету",
+			"description": "Розрахунок бюджету на наступний рік",
+			"status": "in-progress",
+			"priority": "medium",
+			"assigneeId": "8",
+			"createdAt": "2024-01-11T09:00:00Z",
+			"dueDate": "2024-01-18T11:30:00Z"
+		},
+		{
+			"id": "task-9",
+			"title": "Тестування мобільного додатку",
+			"description": "Повне функціональне тестування нової версії",
+			"status": "in-progress",
+			"priority": "high",
+			"assigneeId": "9",
+			"createdAt": "2024-01-13T15:20:00Z",
+			"dueDate": "2024-01-19T10:15:00Z"
+		},
+		{
+			"id": "task-10",
+			"title": "Планування маркетингової кампанії",
+			"description": "Розробка стратегії залучення нових клієнтів",
+			"status": "todo",
+			"priority": "medium",
+			"assigneeId": "10",
+			"createdAt": "2024-01-17T13:45:00Z",
+			"dueDate": "2024-01-17T13:45:00Z"
+		},
+		{
+			"id": "task-11",
+			"title": "Рефакторинг компонентів UI",
+			"description": "Покращення архітектури фронтенд компонентів",
+			"status": "todo",
+			"priority": "low",
+			"assigneeId": "11",
+			"createdAt": "2024-01-16T16:00:00Z",
+			"dueDate": "2024-01-16T16:00:00Z"
+		},
+		{
+			"id": "task-12",
+			"title": "Аудит фінансових процесів",
+			"description": "Перевірка відповідності фінансових процедур",
+			"status": "done",
+			"priority": "high",
+			"assigneeId": "12",
+			"createdAt": "2024-01-05T10:00:00Z",
+			"dueDate": "2024-01-12T14:30:00Z"
+		},
+		{
+			"id": "task-13",
+			"title": "Міграція серверної архітектури",
+			"description": "Переведення сервісів на нову інфраструктуру",
+			"status": "in-progress",
+			"priority": "high",
+			"assigneeId": "13",
+			"createdAt": "2024-01-09T11:30:00Z",
+			"dueDate": "2024-01-18T15:45:00Z"
+		},
+		{
+			"id": "task-14",
+			"title": "Аналіз конверсії продажів",
+			"description": "Дослідження ефективності воронки продажів",
+			"status": "done",
+			"priority": "medium",
+			"assigneeId": "14",
+			"createdAt": "2024-01-07T14:20:00Z",
+			"dueDate": "2024-01-14T12:00:00Z"
+		},
+		{
+			"id": "task-15",
+			"title": "Оптимізація податкового планування",
+			"description": "Розробка стратегії мінімізації податкових витрат",
+			"status": "todo",
+			"priority": "medium",
+			"assigneeId": "15",
+			"createdAt": "2024-01-19T09:30:00Z",
+			"dueDate": "2024-01-19T09:30:00Z"
+		},
+		{
+			"id": "task-16",
+			"title": "Написання документації API",
+			"description": "Створення детальної документації для розробників",
+			"status": "todo",
+			"priority": "low",
+			"assigneeId": "1",
+			"createdAt": "2024-01-20T10:15:00Z",
+			"dueDate": "2024-01-20T10:15:00Z"
+		},
+		{
+			"id": "task-17",
+			"title": "Планування спринту",
+			"description": "Підготовка задач на наступний двотижневий спринт",
+			"status": "in-progress",
+			"priority": "medium",
+			"assigneeId": "2",
+			"createdAt": "2024-01-18T16:00:00Z",
+			"dueDate": "2024-01-19T09:30:00Z"
+		},
+		{
+			"id": "task-18",
+			"title": "Навчання нового співробітника",
+			"description": "Онбординг нового junior розробника",
+			"status": "done",
+			"priority": "medium",
+			"assigneeId": "2",
+			"createdAt": "2024-01-03T09:00:00Z",
+			"dueDate": "2024-01-10T17:30:00Z"
+		}
+	]
+}

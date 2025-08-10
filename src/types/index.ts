@@ -20,20 +20,17 @@ export interface Task {
 	id: string
 	title: string
 	description: string
-	status: TaskStatus
+	status: 'todo' | 'in-progress' | 'done'
 	priority: 'low' | 'medium' | 'high'
 	assigneeId: string
 	createdAt: string
-	updatedAt: string
+	dueDate?: string
 }
 
-export enum TaskStatus {
-	TODO = 'todo',
-	IN_PROGRESS = 'in_progress',
-	COMPLETED = 'completed',
-}
+export type TaskStatus = Task['status']
 
 export enum Department {
+	ALL = 'Усі департаменти',
 	SALES = 'Продажі',
 	FINANCE = 'Фінанси',
 	IT = 'Технічний',

@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 		'Внутрішня система управління членами команди та їхніми завданнями',
 	keywords: 'team, dashboard, tasks, management, команда, завдання',
 	authors: [{ name: 'Team Dashboard' }],
-	viewport: 'width=device-width, initial-scale=1',
 }
 
 export default async function RootLayout({

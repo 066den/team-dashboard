@@ -1,4 +1,4 @@
-import { TeamFilter, TeamMember } from '@/types'
+import { Department, TeamFilter, TeamMember } from '@/types'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -24,8 +24,9 @@ export const getAvatarColor = (name: string): string => {
 }
 
 // Delay utility (simulate API calls)
-export const delayApiCall = (): Promise<void> =>
-	new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400))
+export const delayApiCall = (): Promise<void> => {
+	return new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400))
+}
 
 // Get first letters of a name
 export const getFirstLetters = (name: string, count = 2) => {
@@ -61,7 +62,10 @@ export const filterMembers = (
 ): TeamMember[] => {
 	return members.filter(member => {
 		const matchesDepartment =
-			!filter.department || member.department === filter.department
+			!filter.department ||
+			filter.department === Department.ALL ||
+			member.department === filter.department
+
 		const matchesSearch =
 			!filter.search ||
 			member.name.toLowerCase().includes(filter.search.toLowerCase()) ||

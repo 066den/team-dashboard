@@ -1,3 +1,4 @@
+'use client'
 import {
 	Select,
 	SelectContent,
@@ -8,39 +9,21 @@ import {
 } from '../ui/Select'
 import SearchInput from '../ui/SearchInput'
 import { Department } from '@/types'
-import { useMembersStore } from '@/stores/membersStore'
-import { debounce } from '@/lib/utils'
-import { useCallback, useMemo } from 'react'
+import { useMembers } from '@/hooks/busuness/useMembers'
 
 const TeamFilters = () => {
 	const departments = Object.values(Department)
-	const { filter, setFilter } = useMembersStore()
-
-	const debouncedSearch = useMemo(
-		() =>
-			debounce((value: string) => {
-				setFilter({ ...filter, search: value })
-			}, 300),
-		[filter, setFilter]
-	)
-
-	const setSearchTerm = useCallback(
-		(value: string) => {
-			debouncedSearch(value)
-		},
-		[debouncedSearch]
-	)
+	const { searchQuery, handleSearch, handleDepartmentChange } = useMembers()
 
 	return (
 		<div className='flex flex-col sm:flex-row w-full gap-4'>
-			<SearchInput value={filter.search} onChange={setSearchTerm} />
-			<Select>
+			<SearchInput value={searchQuery} onChange={handleSearch} />
+			<Select onValueChange={handleDepartmentChange}>
 				<SelectTrigger className='sm:w-[240px] max-w-md w-full'>
 					<SelectValue placeholder='Виберіть департамент' />
 				</SelectTrigger>
 				<SelectContent>
 					<SelectGroup>
-						<SelectItem value='all'>Усі департаменти</SelectItem>
 						{departments.map(department => (
 							<SelectItem key={department} value={department}>
 								{department}

@@ -1,3 +1,4 @@
+'use client'
 import { useState } from 'react'
 import IconSvg from './IconSvg'
 import { Input } from './input'
