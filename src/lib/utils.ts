@@ -113,3 +113,70 @@ export const isValidTelegram = (telegram: string): boolean => {
 	const telegramRegex = /^@[a-zA-Z0-9_]{5,32}$/
 	return telegramRegex.test(telegram)
 }
+
+// Export to CSV
+export const exportTeamToCSV = (members: TeamMember[]) => {
+	const headers = [
+		'ID',
+		"Ім'я",
+		'Роль',
+		'Департамент',
+		'Статус',
+		'Телефон',
+		'Telegram',
+		'Email',
+		'Дата приєднання',
+	]
+
+	const csvData = members.map(member => [
+		member.id,
+		member.name,
+		member.role,
+		member.department,
+		member.status === 'active' ? 'Активний' : 'Неактивний',
+		member.phone || '',
+		member.telegram || '',
+		member.email || '',
+		member.joinDate ? formatDate(member.joinDate) : '',
+	])
+
+	const csvContent = [headers, ...csvData]
+		.map(row =>
+			row.map(field => `"${String(field).replace(/"/g, '""')}"`).join(',')
+		)
+		.join('\n')
+
+	const BOM = '\uFEFF'
+	const csvWithBOM = BOM + csvContent
+
+	const blob = new Blob([csvWithBOM], { type: 'text/csv;charset=utf-8;' })
+	const link = document.createElement('a')
+
+	if (link.download !== undefined) {
+		const url = URL.createObjectURL(blob)
+		link.setAttribute('href', url)
+		link.setAttribute(
+			'download',
+			`team-export-${new Date().toISOString().split('T')[0]}.csv`
+		)
+		link.style.visibility = 'hidden'
+		document.body.appendChild(link)
+		link.click()
+		document.body.removeChild(link)
+		URL.revokeObjectURL(url)
+	}
+}
+
+// Format date for CSV
+const formatDate = (dateString: string): string => {
+	try {
+		const date = new Date(dateString)
+		return date.toLocaleDateString('uk-UA', {
+			year: 'numeric',
+			month: '2-digit',
+			day: '2-digit',
+		})
+	} catch {
+		return dateString
+	}
+}
