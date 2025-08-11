@@ -10,10 +10,12 @@ import {
 import SearchInput from '../ui/SearchInput'
 import { Department } from '@/types'
 import { useMembers } from '@/hooks/busuness/useMembers'
+import ExportButton from '../ui/ExportButton'
 
 const TeamFilters = () => {
 	const departments = Object.values(Department)
-	const { searchQuery, handleSearch, handleDepartmentChange } = useMembers()
+	const { searchQuery, handleSearch, handleDepartmentChange, members } =
+		useMembers()
 
 	return (
 		<div className='flex flex-col sm:flex-row w-full gap-4'>
@@ -32,6 +34,9 @@ const TeamFilters = () => {
 					</SelectGroup>
 				</SelectContent>
 			</Select>
+			<div className='flex justify-end'>
+				<ExportButton members={members} />
+			</div>
 		</div>
 	)
 }
