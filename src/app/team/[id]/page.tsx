@@ -4,7 +4,11 @@ import { getMember } from '@/services/mockApi'
 import BackButton from '@/components/common/BackButton'
 import { MemberPageSkeleton } from '@/components/ui/Skeletons'
 
-export async function generateMetadata({ params }: { params: { id: string } }) {
+export async function generateMetadata({
+	params,
+}: {
+	params: Promise<{ id: string }>
+}) {
 	const { id } = await params
 	const member = await getMember(id)
 
@@ -20,7 +24,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 	}
 }
 
-const MemberPage = async ({ params }: { params: { id: string } }) => {
+const MemberPage = async ({ params }: { params: Promise<{ id: string }> }) => {
 	const { id } = await params
 	const member = await getMember(id)
 

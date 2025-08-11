@@ -196,20 +196,6 @@ npm run test:coverage      # З coverage звітом
 
 ### Vercel
 
-```bash
-# Встановити Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel --prod
-```
-
-### Інші платформи
-
-- **Netlify**: Drag & drop dist folder
-- **Railway**: Connect GitHub repo
-- **Docker**: Dockerfile включено
-
 ## 🔮 Roadmap
 
 ### В процесі розробки
@@ -236,13 +222,6 @@ vercel --prod
 3. Commit зміни (`git commit -m 'Add amazing feature'`)
 4. Push в branch (`git push origin feature/amazing-feature`)
 5. Відкрийте Pull Request
-
-### Code Style
-
-- Використовуйте **ESLint** та **Prettier**
-- Слідуйте **TypeScript strict mode**
-- Пишіть тести для нового функціоналу
-- Додавайте JSDoc коментарі для складної логіки
 
 ## 📝 Відомі обмеження
 
@@ -291,77 +270,6 @@ vercel --prod
 - **Persistence** в localStorage
 - **DevTools** для debugging
 
-## 🔍 Code Examples
-
-### Optimistic Updates
-
-```typescript
-// Миттєве оновлення UI
-updateMember: async (id: string, updateData: Partial<TeamMember>) => {
-	// 1. Збереження оригінальних даних
-	const originalMember = members.find(member => member.id === id)
-
-	// 2. Миттєве оновлення UI
-	set(state => {
-		const memberIndex = state.members.findIndex(m => m.id === id)
-		if (memberIndex !== -1) {
-			state.members[memberIndex] = { ...originalMember, ...updateData }
-		}
-	})
-
-	try {
-		// 3. API запит
-		await apiUpdateMember(id, updateData)
-		toast.success('Успішно оновлено')
-	} catch (error) {
-		// 4. Rollback при помилці
-		revertOptimisticUpdate(optimisticId)
-		toast.error('Помилка оновлення')
-	}
-}
-```
-
-### Server Component з Suspense
-
-```typescript
-const MemberPage = async ({ params }: MemberPageProps) => {
-	const { id } = await params
-	const member = await getMember(id) // Server-side fetch
-
-	if (!member) notFound()
-
-	return (
-		<div className='container mx-auto px-4 py-8'>
-			<Suspense fallback={<MemberProfileSkeleton />}>
-				<MemberProfile memberId={id} initialMember={member} />
-			</Suspense>
-		</div>
-	)
-}
-```
-
-### Custom Hook з бізнес-логікою
-
-```typescript
-export const useMembers = () => {
-	const store = useMembersStore()
-
-	const debouncedSetSearch = useMemo(
-		() =>
-			debounce((query: string) => {
-				// Оптимізований пошук з debounce
-				setSearchQuery(query)
-			}, 300),
-		[]
-	)
-
-	return {
-		...store,
-		handleSearch: debouncedSetSearch,
-	}
-}
-```
-
 ## 📋 Чекліст для code review
 
 ### ✅ Code Quality
@@ -394,101 +302,6 @@ export const useMembers = () => {
 - [ ] Стан керується централізовано
 - [ ] API calls ізольовані в services
 
-## 🎯 Ключові metrics
-
-### Bundle Analysis
-
-```bash
-# Аналіз розміру bundle'у
-npm run build && npm run analyze
-
-# Основні пакети:
-# - Next.js: ~200KB
-# - React: ~45KB
-# - Zustand: ~8KB
-# - shadcn/ui: ~50KB
-# - Total: ~350KB gzipped
-```
-
-### Performance Metrics
-
-- **First Contentful Paint**: 0.8s
-- **Largest Contentful Paint**: 1.2s
-- **Cumulative Layout Shift**: 0.05
-- **Time to Interactive**: 1.8s
-
-### Lighthouse Scores
-
-- **Performance**: 98/100
-- **Accessibility**: 95/100
-- **Best Practices**: 100/100
-- **SEO**: 100/100
-
-## 🎨 Design System
-
-### Color Palette
-
-```css
-/* Primary Colors */
---primary: #6366f1        /* Indigo-500 */
---primary-foreground: #fff
-
-/* Secondary Colors */
---secondary: #f1f5f9      /* Slate-100 */
---muted: #64748b          /* Slate-500 */
-
-/* Status Colors */
---success: #10b981        /* Emerald-500 */
---warning: #f59e0b        /* Amber-500 */
---error: #ef4444          /* Red-500 */
-```
-
-### Typography Scale
-
-```css
-/* Headings */
-h1: 2.25rem (36px) - Page titles
-h2: 1.875rem (30px) - Section headers
-h3: 1.5rem (24px) - Subsection headers
-h4: 1.25rem (20px) - Card titles
-
-/* Body text */
-body: 1rem (16px) - Primary text
-small: 0.875rem (14px) - Secondary text
-xs: 0.75rem (12px) - Captions
-```
-
-## 📞 Підтримка
-
-### Bug Reports
-
-Якщо знайшли помилку:
-
-1. Перевірте [Issues](https://github.com/your-repo/issues)
-2. Створіть новий issue з детальним описом
-3. Додайте кроки для відтворення
-4. Вкажіть версію браузера та ОС
-
-### Feature Requests
-
-Для нових функцій:
-
-1. Опишіть use case
-2. Поясніть переваги для користувачів
-3. Додайте mockup'и якщо можливо
-
-### Контакти
-
-- 📧 Email: [your-email@domain.com](mailto:your-email@domain.com)
-- 💼 LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
-
----
-
-## 📄 Ліцензія
-
-MIT License - дивіться [LICENSE](LICENSE) файл для деталей.
-
 ## 🙏 Подяки
 
 - **shadcn** за чудову UI бібліотеку
@@ -501,7 +314,6 @@ MIT License - дивіться [LICENSE](LICENSE) файл для деталей
 
 _Створено з ❤️ для тестового завдання Front-end Developer_
 
-**Час розробки**: 3-5 днів  
+**Час розробки**: 4 дні  
 **Стек**: React 19, Next.js 15, TypeScript, Zustand, shadcn/ui  
 **Статус**: ✅ Production Ready
-
