@@ -104,6 +104,7 @@ export const formatPhoneNumber = (phone: string): string => {
 }
 
 export const isValidPhoneNumber = (phone: string): boolean => {
+	console.log(phone)
 	const phoneRegex = /^\+380\d{9}$/
 	return phoneRegex.test(phone.replace(/\D/g, '').replace(/^380/, '+380'))
 }

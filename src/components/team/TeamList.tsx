@@ -5,19 +5,24 @@ import MemberCardGrid from './MemberCardGrid'
 
 import { GridIcon, ListIcon } from 'lucide-react'
 import { useMembers } from '@/hooks/busuness/useMembers'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group'
+import { TeamPageSkeleton } from '../ui/Skeletons'
 
 const TeamList = () => {
 	const { viewMode, setViewMode, fetchMembers, members } = useMembers()
-
-	useEffect(() => {
-		fetchMembers()
-	}, [fetchMembers])
+	const [mounted, setMounted] = useState(false)
 
 	const handleViewModeChange = (value: 'grid' | 'list') => {
 		if (value) setViewMode(value)
 	}
+
+	useEffect(() => {
+		fetchMembers()
+		setMounted(true)
+	}, [fetchMembers])
+
+	if (!mounted) return <TeamPageSkeleton />
 
 	const fullClassName =
 		viewMode === 'grid'

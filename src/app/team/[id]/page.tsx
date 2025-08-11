@@ -1,7 +1,6 @@
 import { Suspense } from 'react'
 import MemberProfile from '@/components/team/MemberProfile'
 import { getMember } from '@/services/mockApi'
-import { notFound } from 'next/navigation'
 import BackButton from '@/components/common/BackButton'
 import { MemberPageSkeleton } from '@/components/ui/Skeletons'
 

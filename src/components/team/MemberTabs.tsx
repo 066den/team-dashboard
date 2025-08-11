@@ -26,6 +26,11 @@ const MemberTabs = ({ member, setMember }: Props) => {
 	})
 
 	const handleSave = async () => {
+		if (!isValidPhoneNumber(editForm.phone)) {
+			toast.error('Неправильний формат телефону')
+			return
+		}
+
 		try {
 			const updatedData = {
 				phone: editForm.phone || undefined,

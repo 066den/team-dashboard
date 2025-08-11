@@ -31,7 +31,7 @@ const MemberProfile = ({ initialMember }: MemberProfileProps) => {
 					<div className='flex lg:items-center flex-col lg:flex-row gap-4'>
 						<div className='flex-1 flex items-center gap-6'>
 							<div className='flex flex-col items-center gap-2'>
-								<Avatar className='size-18 text-white text-4xl'>
+								<Avatar className='size-18 text-white text-3xl'>
 									<AvatarFallback className={bgColor}>
 										{firstLetters}
 									</AvatarFallback>

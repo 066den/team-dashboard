@@ -8,11 +8,61 @@ interface SkeletonProps {
 	count?: number
 }
 
-export function MemberGridSkeleton({ count = 8 }: SkeletonProps) {
+export function MemberCardSkeleton({ className }: SkeletonProps) {
+	return (
+		<Card className={cn('animate-pulse', className)}>
+			<CardContent className='px-6'>
+				<div className='flex items-center gap-4'>
+					<Skeleton className='h-12 w-12 rounded-full' />
+					<div className='space-y-2'>
+						<Skeleton className='h-5 w-32' />
+						<Skeleton className='h-4 w-24' />
+					</div>
+				</div>
+			</CardContent>
+			<CardFooter className='flex justify-between items-center'>
+				<Skeleton className='h-6 w-16 rounded-full' />
+				<Skeleton className='h-4 w-20' />
+			</CardFooter>
+		</Card>
+	)
+}
+
+export function MemberRowSkeleton({ className }: { className?: string }) {
+	return (
+		<Card className={cn('animate-pulse py-4', className)}>
+			<CardContent className='px-6 flex justify-between items-center'>
+				<div className='flex items-center gap-4'>
+					<Skeleton className='h-12 w-12 rounded-full' />
+					<div className='space-y-2'>
+						<Skeleton className='h-5 w-32' />
+						<Skeleton className='h-4 w-24' />
+					</div>
+				</div>
+				<div className='flex flex-col items-end gap-4'>
+					<Skeleton className='h-5 w-16 rounded-full' />
+					<Skeleton className='h-4 w-20' />
+				</div>
+			</CardContent>
+		</Card>
+	)
+}
+
+export function MemberGridSkeleton({ count = 8 }: { count?: number }) {
 	return (
 		<div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6'>
 			{Array.from({ length: count }).map((_, i) => (
 				<MemberCardSkeleton key={i} />
+			))}
+		</div>
+	)
+}
+
+export function MemberListSkeleton({ count = 6 }: { count?: number }) {
+	return (
+		<div className='flex flex-col gap-4'>
+			{Array.from({ length: count }).map((_, i) => (
+				<MemberRowSkeleton key={i} />
 			))}
 		</div>
 	)
@@ -31,33 +81,13 @@ export function FiltersSkeleton() {
 
 export function TeamPageSkeleton() {
 	return (
-		<div className='container mx-auto px-4 py-8'>
+		<div className='container mx-auto'>
 			<div className='flex justify-end mb-4'>
 				<Skeleton className='h-10 w-32 rounded-md' />
 			</div>
 
 			<MemberGridSkeleton />
 		</div>
-	)
-}
-
-export function MemberCardSkeleton({ className }: SkeletonProps) {
-	return (
-		<Card className={cn('animate-pulse', className)}>
-			<CardContent className='px-6'>
-				<div className='flex items-center gap-4'>
-					<Skeleton className='h-12 w-12 rounded-full' />
-					<div className='space-y-2'>
-						<Skeleton className='h-5 w-32' />
-						<Skeleton className='h-4 w-24' />
-					</div>
-				</div>
-			</CardContent>
-			<CardFooter className='flex justify-between items-center'>
-				<Skeleton className='h-6 w-16 rounded-full' />
-				<Skeleton className='h-4 w-20' />
-			</CardFooter>
-		</Card>
 	)
 }
 
