@@ -58,17 +58,6 @@ const nextConfig: NextConfig = {
 		]
 	},
 
-	// Redirects
-	async redirects() {
-		return [
-			{
-				source: '/',
-				destination: '/team',
-				permanent: true,
-			},
-		]
-	},
-
 	// Performance optimizations
 	compress: true,
 	poweredByHeader: false,
@@ -94,4 +83,3 @@ const nextConfig: NextConfig = {
 }
 
 export default nextConfig
-

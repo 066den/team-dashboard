@@ -34,9 +34,8 @@ const TeamFilters = () => {
 					</SelectGroup>
 				</SelectContent>
 			</Select>
-			<div className='flex justify-end'>
-				<ExportButton members={members} />
-			</div>
+
+			<ExportButton members={members} />
 		</div>
 	)
 }
