@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Edit, Phone, Save, X } from 'lucide-react'
 import { MessageCircle } from 'lucide-react'
 import { Button } from '../ui/button'
@@ -9,6 +9,7 @@ import { Input } from '../ui/input'
 import TaskBoard from './TaskBoard'
 import { useMembers } from '@/hooks/busuness/useMembers'
 import { toast } from 'sonner'
+import { formatPhoneNumber, isValidPhoneNumber } from '@/lib/utils'
 
 type Props = {
 	member: TeamMember
@@ -17,7 +18,7 @@ type Props = {
 
 const MemberTabs = ({ member, setMember }: Props) => {
 	const { updateMember } = useMembers()
-
+	const [customPhone, setCustomPhone] = useState('')
 	const [isEditing, setIsEditing] = useState(false)
 	const [editForm, setEditForm] = useState({
 		phone: member.phone || '',
@@ -40,6 +41,14 @@ const MemberTabs = ({ member, setMember }: Props) => {
 		}
 	}
 
+	const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value
+		const cleaned = value.replace(/\D/g, '')
+		const formatted = formatPhoneNumber(cleaned)
+		setEditForm({ ...editForm, phone: cleaned })
+		setCustomPhone(formatted)
+	}
+
 	const handleCancel = () => {
 		setEditForm({
 			phone: member.phone || '',
@@ -47,6 +56,10 @@ const MemberTabs = ({ member, setMember }: Props) => {
 		})
 		setIsEditing(false)
 	}
+
+	useEffect(() => {
+		setCustomPhone(formatPhoneNumber(member.phone || ''))
+	}, [member.phone])
 
 	return (
 		<Tabs defaultValue='personal-info' className='space-y-4'>
@@ -101,18 +114,16 @@ const MemberTabs = ({ member, setMember }: Props) => {
 											<p className='text-sm text-muted-foreground'>Телефон</p>
 											{isEditing ? (
 												<Input
-													type='tel'
-													value={editForm.phone}
-													onChange={e =>
-														setEditForm({ ...editForm, phone: e.target.value })
-													}
-													placeholder='+380501234567'
+													value={customPhone}
+													onChange={handlePhoneChange}
+													placeholder='380501234567'
 													className='flex-1'
 												/>
 											) : (
 												<div className='flex items-center space-x-2'>
 													<span className='text-sm font-medium'>
-														{member.phone || 'Не вказано'}
+														{`+${formatPhoneNumber(member.phone || '')}` ||
+															'Не вказано'}
 													</span>
 												</div>
 											)}

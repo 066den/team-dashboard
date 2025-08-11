@@ -1,4 +1,4 @@
-import { delayApiCall } from '@/lib/utils'
+import { delayApiCall, simulateApiError } from '@/lib/utils'
 import { getMembers, getTasks } from '@/services/mockApi'
 import { Task, TaskStatus, TeamMember } from '@/types'
 import { toast } from 'sonner'
@@ -50,9 +50,7 @@ export const useMembersStore = create<MembersStore>()(
 					const storedMembers = get().members || []
 					if (storedMembers.length > 0) {
 						await delayApiCall()
-						if (Math.random() < 0.05) {
-							throw new Error('Помилка отримання членів команди')
-						}
+						simulateApiError()
 						set({ members: storedMembers })
 					} else {
 						const originalMembers = await getMembers()
@@ -77,9 +75,7 @@ export const useMembersStore = create<MembersStore>()(
 					const storedTasks = get().tasks || []
 					if (storedTasks.length > 0) {
 						await delayApiCall()
-						if (Math.random() < 0.05) {
-							throw new Error('Помилка отримання завдань')
-						}
+						simulateApiError()
 						set({ tasks: storedTasks })
 					} else {
 						const originalTasks = await getTasks()
@@ -110,9 +106,7 @@ export const useMembersStore = create<MembersStore>()(
 
 				try {
 					await delayApiCall()
-					if (Math.random() < 0.05) {
-						throw new Error('Помилка оновлення профілю')
-					}
+					simulateApiError()
 				} catch (error) {
 					set({ members, error: 'Failed to update member' })
 					throw new Error(
@@ -132,9 +126,7 @@ export const useMembersStore = create<MembersStore>()(
 
 				try {
 					await delayApiCall()
-					if (Math.random() < 0.05) {
-						throw new Error('Помилка оновлення статусу завдання')
-					}
+					simulateApiError()
 					toast.success('Статус завдання оновлено успішно')
 				} catch (error) {
 					const errorMessage =

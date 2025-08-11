@@ -7,7 +7,7 @@ const Header = () => {
 			<div className='container mx-auto px-4 py-4'>
 				<div className='flex flex-col md:flex-row md:justify-between md:items-center gap-4'>
 					<Link
-						href='/team'
+						href='/'
 						className='flex items-center space-x-2 text-xl font-bold text-primary'
 					>
 						<div className='flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground'>

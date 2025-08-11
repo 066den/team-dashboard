@@ -17,6 +17,8 @@ export const getAvatarColor = (name: string): string => {
 		'bg-pink-500',
 		'bg-indigo-500',
 		'bg-teal-500',
+		'bg-orange-500',
+		'bg-cyan-500',
 	]
 
 	const colorIndex = name.length % colors.length
@@ -26,6 +28,13 @@ export const getAvatarColor = (name: string): string => {
 // Delay utility (simulate API calls)
 export const delayApiCall = (): Promise<void> => {
 	return new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 400))
+}
+
+// Simulate API error (5% chance)
+export const simulateApiError = (): void => {
+	if (Math.random() < 0.05) {
+		throw new Error("Помилка з'єднання з сервером")
+	}
 }
 
 // Get first letters of a name
@@ -47,10 +56,12 @@ export const debounce = <Args extends unknown[]>(
 	func: (...args: Args) => void,
 	ms: number
 ): ((...args: Args) => void) => {
-	let timeout: NodeJS.Timeout
+	let timeout: NodeJS.Timeout | null = null
 
 	return (...args: Args) => {
-		clearTimeout(timeout)
+		if (timeout) {
+			clearTimeout(timeout)
+		}
 		timeout = setTimeout(() => func(...args), ms)
 	}
 }
@@ -73,4 +84,31 @@ export const filterMembers = (
 
 		return matchesDepartment && matchesSearch
 	})
+}
+
+export const formatPhoneNumber = (phone: string): string => {
+	const digits = phone.replace(/\D/g, '').slice(0, 12)
+	if (digits.length <= 2) return digits
+	if (digits.length <= 5) return `${digits.slice(0, 2)} ${digits.slice(2)}`
+	if (digits.length <= 8)
+		return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(5)}`
+	if (digits.length <= 10)
+		return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(
+			5,
+			8
+		)} ${digits.slice(8)}`
+	return `${digits.slice(0, 2)} ${digits.slice(2, 5)} ${digits.slice(
+		5,
+		8
+	)} ${digits.slice(8, 10)} ${digits.slice(10, 12)}`
+}
+
+export const isValidPhoneNumber = (phone: string): boolean => {
+	const phoneRegex = /^\+380\d{9}$/
+	return phoneRegex.test(phone.replace(/\D/g, '').replace(/^380/, '+380'))
+}
+
+export const isValidTelegram = (telegram: string): boolean => {
+	const telegramRegex = /^@[a-zA-Z0-9_]{5,32}$/
+	return telegramRegex.test(telegram)
 }

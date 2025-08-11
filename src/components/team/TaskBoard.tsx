@@ -2,6 +2,7 @@ import { useTaskManagement } from '@/hooks/busuness/useTaskManagement'
 import TaskColumn from '../common/TaskColumn'
 import { TaskStatus } from '@/types'
 import { useEffect } from 'react'
+import { TaskBoardSkeleton } from '../ui/Skeletons'
 
 type Props = {
 	memberId: string
@@ -28,7 +29,7 @@ const TaskBoard = ({ memberId }: Props) => {
 		fetchTasks()
 	}, [fetchTasks])
 
-	if (isLoading) return <div>Loading...</div>
+	if (isLoading) return <TaskBoardSkeleton />
 
 	return (
 		<div className='space-y-4'>

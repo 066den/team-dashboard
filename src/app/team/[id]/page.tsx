@@ -3,6 +3,7 @@ import MemberProfile from '@/components/team/MemberProfile'
 import { getMember } from '@/services/mockApi'
 import { notFound } from 'next/navigation'
 import BackButton from '@/components/common/BackButton'
+import { MemberPageSkeleton } from '@/components/ui/Skeletons'
 
 type MemberPageProps = {
 	params: {
@@ -30,10 +31,6 @@ const MemberPage = async ({ params }: MemberPageProps) => {
 	const { id } = await params
 	const member = await getMember(id)
 
-	if (!member) {
-		notFound()
-	}
-
 	return (
 		<div className='container mx-auto px-4 py-8'>
 			<div className='mb-6'>
@@ -41,7 +38,7 @@ const MemberPage = async ({ params }: MemberPageProps) => {
 			</div>
 
 			<div className='space-y-8'>
-				<Suspense fallback={<div>Loading...</div>}>
+				<Suspense fallback={<MemberPageSkeleton />}>
 					<MemberProfile memberId={id} initialMember={member} />
 				</Suspense>
 			</div>

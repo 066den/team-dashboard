@@ -5,20 +5,15 @@ import MemberCardGrid from './MemberCardGrid'
 
 import { GridIcon, ListIcon } from 'lucide-react'
 import { useMembers } from '@/hooks/busuness/useMembers'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { ToggleGroup, ToggleGroupItem } from '../ui/toggle-group'
 
 const TeamList = () => {
 	const { viewMode, setViewMode, fetchMembers, members } = useMembers()
 
-	const [mounted, setMounted] = useState(false)
-
 	useEffect(() => {
-		setMounted(true)
 		fetchMembers()
 	}, [fetchMembers])
-
-	if (!mounted) return <div className='animate-pulse'>Завантаження...</div>
 
 	const handleViewModeChange = (value: 'grid' | 'list') => {
 		if (value) setViewMode(value)
