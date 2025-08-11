@@ -4,11 +4,11 @@ import { MessageCircle } from 'lucide-react'
 import { Button } from '../ui/button'
 import { Card, CardContent, CardHeader } from '../ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs'
-import Tasks from './TaskBoard'
 import { TeamMember } from '@/types'
 import { Input } from '../ui/input'
-import { useMembersStore } from '@/stores/membersStore'
 import TaskBoard from './TaskBoard'
+import { useMembers } from '@/hooks/busuness/useMembers'
+import { toast } from 'sonner'
 
 type Props = {
 	member: TeamMember
@@ -16,7 +16,7 @@ type Props = {
 }
 
 const MemberTabs = ({ member, setMember }: Props) => {
-	const { updateMember } = useMembersStore()
+	const { updateMember } = useMembers()
 
 	const [isEditing, setIsEditing] = useState(false)
 	const [editForm, setEditForm] = useState({
@@ -34,8 +34,9 @@ const MemberTabs = ({ member, setMember }: Props) => {
 			await updateMember(member.id, updatedData)
 			setMember({ ...member, ...updatedData })
 			setIsEditing(false)
+			toast.success('Профіль оновлено успішно')
 		} catch (error) {
-			console.error('Помилка оновлення профілю:', error)
+			toast.error(error instanceof Error && error.message)
 		}
 	}
 

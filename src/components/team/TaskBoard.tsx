@@ -11,7 +11,6 @@ const TaskBoard = ({ memberId }: Props) => {
 	const {
 		tasksByStatus,
 		isLoading,
-		error,
 		draggedTask,
 		fetchTasks,
 		handleDragEnd,
@@ -30,7 +29,6 @@ const TaskBoard = ({ memberId }: Props) => {
 	}, [fetchTasks])
 
 	if (isLoading) return <div>Loading...</div>
-	if (error) return <div>Error: {error}</div>
 
 	return (
 		<div className='space-y-4'>

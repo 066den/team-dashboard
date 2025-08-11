@@ -1,7 +1,7 @@
 'use client'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useMembersStore } from '../../stores/membersStore'
-import { Department, TeamMember } from '@/types'
+import { Department } from '@/types'
 import { debounce } from '@/lib/utils'
 
 export const useMembers = () => {
@@ -13,6 +13,7 @@ export const useMembers = () => {
 		fetchMembers,
 		viewMode,
 		setViewMode,
+		updateMember,
 		setFilteredMembers,
 	} = useMembersStore()
 
@@ -69,5 +70,6 @@ export const useMembers = () => {
 		handleDepartmentChange,
 		searchQuery,
 		selectedDepartment,
+		updateMember,
 	}
 }

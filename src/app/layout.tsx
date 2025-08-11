@@ -4,6 +4,7 @@ import '@/app/globals.css'
 import Footer from '@/components/common/Footer'
 import Header from '@/components/common/Header'
 import { Inter } from 'next/font/google'
+import { Toaster } from 'sonner'
 
 const inter = Inter({ subsets: ['latin', 'cyrillic'] })
 
@@ -27,6 +28,7 @@ export default async function RootLayout({
 					<Header />
 					<div className='flex-1'>{children}</div>
 					<Footer />
+					<Toaster richColors position='top-center' />
 				</main>
 			</body>
 		</html>

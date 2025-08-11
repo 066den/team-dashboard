@@ -1,6 +1,7 @@
 import { delayApiCall } from '@/lib/utils'
 import { getMembers, getTasks } from '@/services/mockApi'
 import { Task, TaskStatus, TeamMember } from '@/types'
+import { toast } from 'sonner'
 import { create } from 'zustand'
 import { createJSONStorage, persist } from 'zustand/middleware'
 
@@ -50,19 +51,21 @@ export const useMembersStore = create<MembersStore>()(
 					if (storedMembers.length > 0) {
 						await delayApiCall()
 						if (Math.random() < 0.05) {
-							throw new Error('Failed to fetch team members')
+							throw new Error('Помилка отримання членів команди')
 						}
 						set({ members: storedMembers })
 					} else {
 						const originalMembers = await getMembers()
 						if (!originalMembers) {
-							throw new Error('Failed to fetch team members')
+							throw new Error('Помилка отримання членів команди')
 						}
 						set({ members: originalMembers })
 					}
 				} catch (error) {
-					console.error('Error fetching team members:', error)
-					set({ error: 'Failed to fetch team members' })
+					const errorMessage =
+						error instanceof Error ? error.message : 'Неизвестная ошибка'
+					toast.error(errorMessage)
+					set({ error: errorMessage })
 				} finally {
 					set({ isLoading: false })
 				}
@@ -75,19 +78,21 @@ export const useMembersStore = create<MembersStore>()(
 					if (storedTasks.length > 0) {
 						await delayApiCall()
 						if (Math.random() < 0.05) {
-							throw new Error('Failed to fetch team members')
+							throw new Error('Помилка отримання завдань')
 						}
 						set({ tasks: storedTasks })
 					} else {
 						const originalTasks = await getTasks()
 						if (!originalTasks) {
-							throw new Error('Failed to fetch team members')
+							throw new Error('Помилка отримання завдань')
 						}
 						set({ tasks: originalTasks })
 					}
 				} catch (error) {
-					console.error('Error fetching tasks:', error)
-					set({ error: 'Failed to fetch tasks' })
+					const errorMessage =
+						error instanceof Error ? error.message : 'Неизвестная ошибка'
+					toast.error(errorMessage)
+					set({ error: errorMessage })
 				} finally {
 					set({ isLoading: false })
 				}
@@ -106,11 +111,13 @@ export const useMembersStore = create<MembersStore>()(
 				try {
 					await delayApiCall()
 					if (Math.random() < 0.05) {
-						throw new Error('Failed to update member')
+						throw new Error('Помилка оновлення профілю')
 					}
 				} catch (error) {
-					console.error('Error updating member:', error)
 					set({ members, error: 'Failed to update member' })
+					throw new Error(
+						error instanceof Error ? error.message : 'Неизвестная ошибка'
+					)
 				}
 			},
 
@@ -126,11 +133,14 @@ export const useMembersStore = create<MembersStore>()(
 				try {
 					await delayApiCall()
 					if (Math.random() < 0.05) {
-						throw new Error('Failed to update task status')
+						throw new Error('Помилка оновлення статусу завдання')
 					}
+					toast.success('Статус завдання оновлено успішно')
 				} catch (error) {
-					console.error('Error updating task status:', error)
-					set({ tasks, error: 'Failed to update task status' })
+					const errorMessage =
+						error instanceof Error ? error.message : 'Неизвестная ошибка'
+					set({ tasks, error: errorMessage })
+					toast.error(errorMessage)
 				}
 			},
 
