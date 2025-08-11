@@ -1,9 +1,7 @@
-'use client'
+import { Suspense } from 'react'
 import PageHeading from '@/components/common/PageHeading'
-
 import TeamList from '@/components/team/TeamList'
 import TeamFilters from '@/components/team/TeamFilters'
-import { Suspense } from 'react'
 import { TeamPageSkeleton } from '@/components/ui/Skeletons'
 
 const TeamPage = () => {

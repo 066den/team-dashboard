@@ -1,4 +1,3 @@
-// src/components/team/ExportButton.tsx
 'use client'
 
 import { useState } from 'react'
